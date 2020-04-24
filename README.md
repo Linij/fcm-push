@@ -27,3 +27,4 @@ Google FCM push use go &amp; iris framework .
 
 # 代码变动时需要重新编译
 reload go run main.go
+

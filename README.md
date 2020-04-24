@@ -13,6 +13,9 @@ go 1.14+ 需要配置相关环境变量
 # 启动命令，进入项目根目录
 export GO111MODULE=on
 
+
+cd config && rm config.toml && cp config.toml.(dev/develop/online).example config.toml 
+
 go run main.go (super 管理)
 
 

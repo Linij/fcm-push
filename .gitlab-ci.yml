@@ -1,4 +1,5 @@
 variables:
+  GET_SOURCES_ATTEMPTS: 3
   Project: hk8591-gopush
   HtdocsDir: /home/htdocs
   ProjecHtdocsDir: /home/htdocs/gopush

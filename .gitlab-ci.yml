@@ -1,0 +1,85 @@
+variables:
+  Project: hk8591-gopush
+  HtdocsDir: /home/htdocs
+  ProjecHtdocsDir: /home/htdocs/gopush
+  ProjectName: ${Project}-${CI_COMMIT_REF_NAME}
+  ProjectDir: ${HtdocsDir}/${Project}-${CI_COMMIT_REF_NAME}
+  IMAGE: hub.591.com.tw/${Project}:${CI_COMMIT_REF_NAME}
+  NFS_DEV: 192.168.1.24
+  NFS_DEV_DIR: /home/htdocs
+  NFS_online: 192.168.1.75
+  NFS_online_DIR: /home/htdocs
+  NFS_UPLOAD_DEV: 192.168.1.24
+  NFS_UPLOAD_DEV_DIR: /home/htdocs
+  KUBE_online: 192.168.1.155
+  KUBE_online_PORT: "8080"
+  KUBE_DEV: 192.168.1.155
+  KUBE_DEV_PORT: "8080"
+  replicas: "1"
+
+stages:
+  - build
+  - BuildDocker
+  - deploy
+
+
+job_build_online:
+  stage: build
+  script:
+    - sh _gitlabci/build.sh
+  only:
+    - online
+  tags:
+    - t8591-runner-php73-node10-nfs75
+
+job_builddocker_online:
+  stage: BuildDocker
+  script:
+    - sh _gitlabci/BuildDocker.sh
+  only:
+    - online
+  tags:
+    - t8591-runner-php73-node10-nfs75
+
+job_deploy_online:
+  stage: deploy
+  script:
+    - sh _gitlabci/deploy.sh
+  only:
+    - online
+  tags:
+    - t8591-runner-php73-node10-nfs75
+    
+
+    
+    
+
+job_build_develop:
+  stage: build
+    - sh _gitlabci/build.sh
+  only:
+    - develop
+  tags:
+    - t8591-runner-php73-node10-nfs24
+
+    
+job_builddocker_develop:
+  stage: BuildDocker
+  script:
+    - sh _gitlabci/BuildDocker.sh
+  only:
+    - develop
+  tags:
+    - t8591-runner-php73-node10-nfs24
+
+job_deploy_develop:
+  stage: deploy
+  script:
+    - sh _gitlabci/deploy.sh
+  only:
+    - develop
+  tags:
+    - t8591-runner-php73-node10-nfs24
+    
+
+    

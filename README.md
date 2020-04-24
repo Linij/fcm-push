@@ -25,6 +25,5 @@ Google FCM push use go &amp; iris framework .
 # 需要域名
 0.0.0.0:8089 -> push.debug.8591.com.hk
 
-# 代码变动时需要重新编译
-reload go run main.go
+
 

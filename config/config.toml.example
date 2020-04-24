@@ -4,7 +4,7 @@
 
 [app]
   #app 名称
-  name = "you_project_name"
+  name = "go-push"
   #app url
   url  = "http://localhost"
   #app 文档地址

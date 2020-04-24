@@ -1,0 +1,6 @@
+.idea
+config/serviceAccountKey.json
+config/linjiserviceAccountKey.json
+config/config.toml
+gopush_gitlib
+gopush

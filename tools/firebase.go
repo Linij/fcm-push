@@ -45,7 +45,7 @@ func NewFirebaseApp() *firebase.App {
 	var err error
 
 	onceApp.Do(func() {
-		opt := option.WithCredentialsFile("./config/serviceAccountKey.json")
+		opt := option.WithCredentialsFile("./config/linjiserviceAccountKey.json")
 		app, err = firebase.NewApp(context.Background(), nil, opt)
 	})
 

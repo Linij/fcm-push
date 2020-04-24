@@ -1,4 +1,4 @@
-module gcm-push
+module go-push
 
 go 1.14
 

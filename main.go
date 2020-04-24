@@ -1,9 +1,9 @@
 package main
 
 import (
-	controllers2 "gcm-push/web/controllers"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/mvc"
+	controllers2 "go-push/web/controllers"
 )
 
 func main() {

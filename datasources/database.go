@@ -2,10 +2,10 @@ package datasources
 
 import (
 	"fmt"
-	"gcm-push/config"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/pelletier/go-toml"
+	"go-push/config"
 	"time"
 	"unsafe"
 )

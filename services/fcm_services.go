@@ -5,7 +5,7 @@ import (
 	"errors"
 	"firebase.google.com/go/messaging"
 	"fmt"
-	"gcm-push/tools"
+	"go-push/tools"
 )
 
 type FcmService struct{}

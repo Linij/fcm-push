@@ -6,8 +6,8 @@ package main
 
 import (
     "fmt"
-	"gcm-push/datasources"
-	"gcm-push/models"
+	"go-push/datasources"
+	"go-push/models"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package services
 
 import (
-	ds "gcm-push/datasources"
-	"gcm-push/models"
+	ds "go-push/datasources"
+	"go-push/models"
 	"time"
 )
 

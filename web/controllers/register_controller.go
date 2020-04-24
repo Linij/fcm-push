@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"gcm-push/services"
 	"github.com/kataras/iris/v12"
+	"go-push/services"
 )
 
 type RegisterController struct {

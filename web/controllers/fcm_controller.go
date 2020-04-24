@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"encoding/json"
-	"gcm-push/services"
 	"github.com/kataras/iris/v12"
+	"go-push/services"
 	"strings"
 )
 

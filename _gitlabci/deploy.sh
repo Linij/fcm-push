@@ -74,6 +74,7 @@ function RollUpdate()
 find ${ProjectDir}/.gitlab-ci.yml -type f -print | xargs md5sum > /tmp/${ProjectName}_new.md5 
 find ${ProjectDir}/_gitlabci/deploy.sh -type f -print | xargs md5sum >> /tmp/${ProjectName}_new.md5
 find ${ProjectDir}/_gitlabci/BuildDocker.sh -type f -print | xargs md5sum >> /tmp/${ProjectName}_new.md5
+find ${ProjectDir}/_gitlabci/Dockerfile -type f -print | xargs md5sum >> /tmp/${ProjectName}_new.md5
 find ${ProjectDir}/_gitlabci/start.sh -type f -print | xargs md5sum >> /tmp/${ProjectName}_new.md5
 
 

@@ -54,14 +54,13 @@ spec:
         nfs:
             server: ${NFS_online}
             path: ${NFS_online_DIR}/${ProjectName}
-       - name: super
+      - name: super
         nfs:
             server: ${NFS_online}
             path: ${NFS_online_DIR}/${ProjectName}/_super_${CI_COMMIT_REF_NAME}
       restartPolicy: Always
       nodeSelector:
         performance: ${Labels_Selector}
-
 SUB
 }
 

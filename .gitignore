@@ -4,3 +4,6 @@ config/linjiserviceAccountKey.json
 config/config.toml
 gopush_gitlib
 gopush
+_gitlabci
+_super_develop
+.gitlab-ci.yml

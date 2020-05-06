@@ -2,10 +2,14 @@ package services
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"firebase.google.com/go/messaging"
 	"fmt"
+	ds "go-push/datasources"
+	"go-push/models"
 	"go-push/tools"
+	"time"
 )
 
 type FcmService struct{}
@@ -29,6 +33,17 @@ func (f *FcmService) SendToToken(token string, data map[string]string, notificat
 	if err != nil {
 		return "Firebase 推送错误", err
 	}
+
+	// 推送完成之后记录到推送记录里面
+	body, err := json.Marshal(message.Data)
+
+	messageModel := &models.PushMessage{
+		Body:      body,
+		DeviceId:  "",
+		Status:    "",
+		CreatedAt: time.Time{},
+	}
+	err = ds.DB.Create(messageModel).Error
 
 	return response, err
 }

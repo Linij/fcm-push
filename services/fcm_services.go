@@ -14,8 +14,25 @@ import (
 
 type FcmService struct{}
 
+// 向指定的用户发送消息
+func (f *FcmService) SendByUuid(uuid string, data map[string]string, notification map[string]string) (string, error) {
+	//notify := &messaging.Notification{
+	//    Title:    notification["title"],
+	//    Body:     notification["body"],
+	//    ImageURL: notification["image_url"],
+	//}
+
+	deviceModel := &models.PushDevice{}
+	rs := ds.DB.Where("uuid = ?", uuid).Find(deviceModel)
+
+	println(rs.Row())
+
+	return "", nil
+
+}
+
 // 向指定的设备发送消息
-func (f *FcmService) SendToToken(token string, data map[string]string, notification map[string]string) (string, error) {
+func (f *FcmService) SendByToken(token string, data map[string]string, notification map[string]string, deviceId string) (string, error) {
 	notify := &messaging.Notification{
 		Title:    notification["title"],
 		Body:     notification["body"],
@@ -39,7 +56,7 @@ func (f *FcmService) SendToToken(token string, data map[string]string, notificat
 
 	messageModel := &models.PushMessage{
 		Body:      body,
-		DeviceId:  "",
+		DeviceId:  deviceId,
 		Status:    "",
 		CreatedAt: time.Time{},
 	}

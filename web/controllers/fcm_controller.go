@@ -19,6 +19,7 @@ func (c *FcmController) Get() {
 func (c *FcmController) PostSend() {
 	var (
 		token        = c.Ctx.FormValue("token")
+		deviceId     = c.Ctx.FormValue("device_id")
 		data         = c.Ctx.FormValue("data")
 		notification = c.Ctx.FormValue("notification")
 	)
@@ -29,7 +30,30 @@ func (c *FcmController) PostSend() {
 	_ = json.Unmarshal([]byte(data), &sendData)
 	_ = json.Unmarshal([]byte(notification), &sendNotification)
 
-	result, err := c.FcmService.SendToToken(token, sendData, sendNotification)
+	result, err := c.FcmService.SendByToken(token, sendData, sendNotification, deviceId)
+
+	if err != nil {
+		_, _ = c.Ctx.JSON(ApiResource(false, nil, err.Error()))
+		return
+	}
+
+	_, _ = c.Ctx.JSON(ApiResource(true, nil, result))
+}
+
+func (c *FcmController) PostSendUuid() {
+	var (
+		uuid         = c.Ctx.FormValue("uuid")
+		data         = c.Ctx.FormValue("data")
+		notification = c.Ctx.FormValue("notification")
+	)
+
+	var sendData map[string]string
+	var sendNotification map[string]string
+
+	_ = json.Unmarshal([]byte(data), &sendData)
+	_ = json.Unmarshal([]byte(notification), &sendNotification)
+
+	result, err := c.FcmService.SendByUuid(uuid, sendData, sendNotification)
 
 	if err != nil {
 		_, _ = c.Ctx.JSON(ApiResource(false, nil, err.Error()))

@@ -26,9 +26,16 @@ func (r *RegisterService) Register(uuid string, deviceId string, token string, p
 	return
 }
 
-// 刪除推送設備
-func (r *RegisterService) Delete(deviceId string) (err error) {
+// 根据设备 ID 删除已经注册的推送设备
+func (r *RegisterService) DeleteByDevicedId(deviceId string) (err error) {
 	err = ds.DB.Delete(models.PushDevice{}, "device_id = ?", deviceId).Error
+
+	return
+}
+
+// 根据 UUID 删除已经注册的推送设备
+func (r *RegisterService) DeleteByUUID(uuid string) (err error) {
+	err = ds.DB.Delete(models.PushDevice{}, "uuid = ?", uuid).Error
 
 	return
 }
